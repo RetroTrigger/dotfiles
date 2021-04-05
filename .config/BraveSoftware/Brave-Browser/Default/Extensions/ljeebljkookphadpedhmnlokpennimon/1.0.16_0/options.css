@@ -1,0 +1,98 @@
+body {
+	font-size: 14px;
+	line-height:20px;
+}
+
+.header{
+	text-align:center;
+}
+
+.header h1{
+	font-weight: 700;
+	font-size: 24px;
+	margin: 0;
+}
+
+.header span{
+  padding-left: 10px;
+	font-size: small;
+  font-weight: normal;
+}
+
+.container{
+	width: 600px;
+	margin: 0 auto;
+	padding:20px 20px 10px 20px;
+	background: #f3f3f3;
+}
+
+td{
+	margin: 4px;
+	padding:12px 6px;
+	border-bottom: 1px dashed #ccc;
+	position: relative;
+}
+
+.social{
+  text-align: center;
+  padding-top: 10px;
+}
+
+.social .socialimg:hover{
+   cursor: pointer;
+}
+
+.social .gplusimg{
+  padding: 2px;
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+}
+
+.social .fbimg{
+  height: 32px;
+  width: 32px;
+  border-radius: 10px;
+}
+
+.social .twitterimg{
+  padding: 2px;
+  width: 28px;
+  height: 28px;
+}
+
+#headerImg{
+  position: absolute;
+  width: 60px;
+  left: 20px;
+  top: -15px;
+}
+
+#previewSound{
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+#previewSound:hover{
+   cursor: pointer;
+}
+
+input{
+  text-align:center;
+}
+
+select{
+	padding:4px;
+	vertical-align: middle;
+	width: 90%;
+}
+#notificationSound{
+  width: 80%;
+}
+
+#status{
+	font-weight: 700;
+	font-size: 16px;
+	text-align:center;
+}

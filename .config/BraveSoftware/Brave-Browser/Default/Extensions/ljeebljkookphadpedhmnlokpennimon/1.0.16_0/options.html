@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Google Inbox Checker Options</title>
+	<link rel="stylesheet" type="text/css" href="options.css">
+</head>
+<body>
+	<div class="container">
+		<table cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td colspan="3">
+				  <a target='_blank' href="https://chrome.google.com/webstore/detail/google-inbox-checker-inbo/ljeebljkookphadpedhmnlokpennimon?utm_source=chrome-ntp-icon" >
+				  <img id="headerImg" src="assets/icon_256.png"></a>
+					<span class="header">
+						<h1>Google Inbox Checker Options<span id="version"></span></h1>
+					</span>
+				</td>
+			</tr>
+
+<!--###################################################################################-->
+      <!-- active account -->
+			<tr>
+				<td class="left">
+					Active Account<br /><small>Choose the account to monitor (for multiple accounts)</small>
+				</td>
+				<td>
+					<select id="activeAccount">
+					</select>
+				</td>
+			</tr>
+			<!-- refresh interval -->
+			<tr>
+				<td class="left">
+					Refresh Interval<br /><small>Time between refreshes when no Google Inbox tab is open</small>
+				</td>
+				<td>
+					<select id="refreshInterval">
+					  <option value="0.166666">10 seconds</option>
+					  <option value="0.5">30 seconds</option>
+						<option value="1">1 minute</option>
+						<option value="5">5 minutes</option>
+						<option value="10">10 minutes</option>
+						<option value="30">30 minutes</option>
+					</select>
+				</td>
+			</tr>
+			<!-- use notifications -->
+			<tr>
+				<td class="left">
+					Show desktop notifications<br /><small></small>
+				</td>
+
+				<td>
+					<input type="checkbox" id="useNotifications">
+				</td>
+			</tr>
+			<!-- sounds -->
+			<tr>
+				<td class="left">
+					New mail sound<br /><small></small>
+				</td>
+				<td>
+					<select id="notificationSound">
+					</select>
+					<img id="previewSound" src="assets/previewSound.png"></img>
+				</td>
+			</tr>
+
+		</table>
+		<!-- social -->
+	  <div class="social">
+	    <div>If you like it - Share it!</div>
+	    <div>
+          <a><img class="socialimg gplusimg"
+            src="https://www.gstatic.com/images/icons/gplus-32.png"
+            alt="Share on Google+"/></a>
+          <a><img class="socialimg fbimg"
+            src="https://fbstatic-a.akamaihd.net/rsrc.php/yl/r/H3nktOa7ZMg.ico"
+            alt="Share on Facebook"/></a>
+  	      <a><img class="socialimg twitterimg"
+  	        src="http://1.bp.blogspot.com/-NsyuP1XtPRg/UTk9isDFUOI/AAAAAAAABQw/VJswac_Pkm0/s000/twitter.png"
+  	        alt="Share on Twitter"/></a>
+      </div>
+    </div>
+    <div id="status"></div>
+	</div>
+</body>
+<script src="options.js"></script>
+</html>

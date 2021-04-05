@@ -1,0 +1,45 @@
+2021/03/29-13:21:32.301 250047 Recovering log #18
+2021/03/29-13:21:32.301 250047 Level-0 table #20: started
+2021/03/29-13:21:32.305 250047 Level-0 table #20: 204 bytes OK
+2021/03/29-13:21:32.317 250047 Delete type=3 #16
+2021/03/29-13:21:32.317 250047 Delete type=0 #18
+2021/03/29-13:21:32.317 24ba5c Compacting 4@0 + 0@1 files
+2021/03/29-13:21:32.318 24ba5c Compacted 4@0 + 0@1 files => 0 bytes
+2021/03/29-13:21:32.329 24ba5c compacted to: files[ 0 0 0 0 0 0 0 ]
+2021/03/29-13:21:32.330 24ba5c Delete type=2 #10
+2021/03/29-13:21:32.330 24ba5c Delete type=2 #7
+2021/03/29-13:21:32.330 24ba5c Delete type=2 #20
+2021/03/29-13:21:32.330 24ba5c Delete type=2 #17
+2021/03/29-13:22:20.883 25732e Level-0 table #23: started
+2021/03/29-13:22:20.894 25732e Level-0 table #23: 8721 bytes OK
+2021/03/29-13:22:20.900 25732e Delete type=0 #21
+2021/03/29-13:23:06.442 25732e Level-0 table #25: started
+2021/03/29-13:23:06.447 25732e Level-0 table #25: 8721 bytes OK
+2021/03/29-13:23:06.453 25732e Delete type=0 #22
+2021/03/29-13:23:52.002 25732e Level-0 table #27: started
+2021/03/29-13:23:52.007 25732e Level-0 table #27: 8703 bytes OK
+2021/03/29-13:23:52.013 25732e Delete type=0 #24
+2021/03/29-13:24:37.562 25732e Level-0 table #29: started
+2021/03/29-13:24:37.571 25732e Level-0 table #29: 8704 bytes OK
+2021/03/29-13:24:37.577 25732e Delete type=0 #26
+2021/03/29-13:25:23.122 25732e Level-0 table #31: started
+2021/03/29-13:25:23.128 25732e Level-0 table #31: 8701 bytes OK
+2021/03/29-13:25:23.139 25732e Delete type=0 #28
+2021/03/29-13:26:08.683 259cbe Level-0 table #33: started
+2021/03/29-13:26:08.688 259cbe Level-0 table #33: 8700 bytes OK
+2021/03/29-13:26:08.694 259cbe Delete type=0 #30
+2021/03/29-13:26:08.695 259cbe Compacting 4@0 + 1@1 files
+2021/03/29-13:26:08.704 259cbe Generated table #34@0: 1 keys, 549 bytes
+2021/03/29-13:26:08.704 259cbe Compacted 4@0 + 1@1 files => 549 bytes
+2021/03/29-13:26:08.713 259cbe compacted to: files[ 0 1 1 0 0 0 0 ]
+2021/03/29-13:26:08.714 259cbe Delete type=2 #33
+2021/03/29-13:26:08.715 259cbe Delete type=2 #31
+2021/03/29-13:26:08.715 259cbe Delete type=2 #25
+2021/03/29-13:26:08.715 259cbe Delete type=2 #29
+2021/03/29-13:26:08.715 259cbe Delete type=2 #27
+2021/03/29-13:26:54.242 25732e Level-0 table #36: started
+2021/03/29-13:26:54.247 25732e Level-0 table #36: 8708 bytes OK
+2021/03/29-13:26:54.252 25732e Delete type=0 #32
+2021/03/29-13:27:39.797 25732e Level-0 table #38: started
+2021/03/29-13:27:39.807 25732e Level-0 table #38: 8707 bytes OK
+2021/03/29-13:27:39.813 25732e Delete type=0 #35

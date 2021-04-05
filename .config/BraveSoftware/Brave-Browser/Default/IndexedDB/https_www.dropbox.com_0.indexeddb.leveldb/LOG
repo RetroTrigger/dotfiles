@@ -1,0 +1,15 @@
+2021/03/21-19:19:29.435 197f Reusing MANIFEST /home/user/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_www.dropbox.com_0.indexeddb.leveldb/MANIFEST-000001
+2021/03/21-19:19:29.436 197f Recovering log #7
+2021/03/21-19:19:29.436 197f Reusing old log /home/user/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_www.dropbox.com_0.indexeddb.leveldb/000007.log 
+2021/03/21-19:22:22.034 56a8 Level-0 table #12: started
+2021/03/21-19:22:22.048 56a8 Level-0 table #12: 166943 bytes OK
+2021/03/21-19:22:22.053 56a8 Delete type=0 #7
+2021/03/21-19:22:22.054 56a8 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2021/03/21-19:22:22.054 56a8 Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x01\x02\x02\x01\x0f\x00l\x00a\x00s\x00t\x00P\x00u\x00b\x00l\x00i\x00s\x00h\x00T\x00i\x00m\x00e' @ 2854 : 1
+2021/03/21-19:22:22.054 56a8 Compacting 1@1 + 1@2 files
+2021/03/21-19:22:22.059 56a8 Generated table #13@1: 40 keys, 1519 bytes
+2021/03/21-19:22:22.059 56a8 Compacted 1@1 + 1@2 files => 1519 bytes
+2021/03/21-19:22:22.064 56a8 compacted to: files[ 0 0 1 0 0 0 0 ]
+2021/03/21-19:22:22.064 56a8 Delete type=2 #9
+2021/03/21-19:22:22.064 56a8 Delete type=2 #12
+2021/03/21-19:22:22.064 56a8 Manual compaction at level-1 from '\x00\x01\x02\x02\x01\x0f\x00l\x00a\x00s\x00t\x00P\x00u\x00b\x00l\x00i\x00s\x00h\x00T\x00i\x00m\x00e' @ 2854 : 1 .. (end); will stop at (end)

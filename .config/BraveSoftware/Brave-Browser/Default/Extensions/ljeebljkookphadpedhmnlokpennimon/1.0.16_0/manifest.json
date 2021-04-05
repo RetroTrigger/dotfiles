@@ -1,0 +1,21 @@
+{
+   "background": {
+      "page": "background.html"
+   },
+   "browser_action": {
+      "default_icon": "assets/inbox_not_logged_in.png"
+   },
+   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com ;object-src 'self'",
+   "description": "Displays the number of unread messages in your Google Inbox with desktop notifications for new emails.",
+   "icons": {
+      "128": "assets/icon_128.png",
+      "256": "assets/icon_256.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAysmms9xxeHh7ZVYc5fJ4IH6DBWlI6jsSAVPGr1G7HU+6vyAjEzizMhMqvnfYpOhlqMNF0lj9DaC6EvkVe/JaJl95kflZDIdywRYdRkG6bycw5gVYTDBszTTCVFitZh5LuadHaDfcsDkVy0TcZlZkaxsxkBGr3p9/qG+gE996kvBCCVJvPkXQza8lENull9SbZwUmYg4RH2skotujo/lI0wgx7BKEPaPWwVBH2B/C48FyOMBljUmp5PnbAScxKzxbKdLHVjFYl+Pk7mDb+/LfleoLoq68PgRWdUREsPeDCGBEEFrhC+KNTX5aQFJM5nGO4w4oTKHJI3fFLVBjoIOIKwIDAQAB",
+   "manifest_version": 2,
+   "name": "Google Inbox Checker (Inbox by Gmail)",
+   "options_page": "options.html",
+   "permissions": [ "tabs", "webNavigation", "storage", "notifications", "*://mail.google.com/", "*://inbox.google.com/" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0.16"
+}

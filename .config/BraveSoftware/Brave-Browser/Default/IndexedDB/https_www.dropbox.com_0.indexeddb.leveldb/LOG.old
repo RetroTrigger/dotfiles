@@ -1,0 +1,15 @@
+2021/03/21-19:19:15.956 1e7b Reusing MANIFEST /home/user/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_www.dropbox.com_0.indexeddb.leveldb/MANIFEST-000001
+2021/03/21-19:19:15.956 1e7b Recovering log #4
+2021/03/21-19:19:15.956 1e7b Reusing old log /home/user/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_www.dropbox.com_0.indexeddb.leveldb/000004.log 
+2021/03/21-19:19:27.265 1e7b Level-0 table #8: started
+2021/03/21-19:19:27.276 1e7b Level-0 table #8: 152544 bytes OK
+2021/03/21-19:19:27.286 1e7b Delete type=0 #4
+2021/03/21-19:19:27.286 1e7b Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2021/03/21-19:19:27.286 1e7b Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x01\x01\x1f\x01\x0a\x00w\x00e\x00b\x00_\x00t\x00i\x00m\x00i\x00n\x00g\x00\x04\x03\x01\x0a\x00w\x00e\x00b\x00_\x00t\x00i\x00m\x00i\x00n\x00g\x04\x03\x01\x06\x00i\x00s\x00_\x00d\x00w\x00s\x01\x0b\x00s\x00o\x00u\x00r\x00c\x00e\x00_\x00t\x00y\x00p\x00e\x01\x0f\x00n\x00a\x00v\x00i\x00g\x00a\x00t\x00i\x00o\x00n\x00_\x00t\x00y\x00p\x00e\x04\x03\x01\x05\x00f\x00a\x00l\x00s\x00e\x01\x03\x00w\x00e\x00b\x01\x08\x00n\x00a\x00v\x00i\x00g\x00a\x00t\x00e' @ 905 : 1
+2021/03/21-19:19:27.286 1e7b Compacting 1@1 + 1@2 files
+2021/03/21-19:19:27.291 1e7b Generated table #9@1: 36 keys, 2738 bytes
+2021/03/21-19:19:27.291 1e7b Compacted 1@1 + 1@2 files => 2738 bytes
+2021/03/21-19:19:27.296 1e7b compacted to: files[ 0 0 1 0 0 0 0 ]
+2021/03/21-19:19:27.296 1e7b Delete type=2 #8
+2021/03/21-19:19:27.296 1e7b Delete type=2 #5
+2021/03/21-19:19:27.296 1e7b Manual compaction at level-1 from '\x00\x01\x01\x1f\x01\x0a\x00w\x00e\x00b\x00_\x00t\x00i\x00m\x00i\x00n\x00g\x00\x04\x03\x01\x0a\x00w\x00e\x00b\x00_\x00t\x00i\x00m\x00i\x00n\x00g\x04\x03\x01\x06\x00i\x00s\x00_\x00d\x00w\x00s\x01\x0b\x00s\x00o\x00u\x00r\x00c\x00e\x00_\x00t\x00y\x00p\x00e\x01\x0f\x00n\x00a\x00v\x00i\x00g\x00a\x00t\x00i\x00o\x00n\x00_\x00t\x00y\x00p\x00e\x04\x03\x01\x05\x00f\x00a\x00l\x00s\x00e\x01\x03\x00w\x00e\x00b\x01\x08\x00n\x00a\x00v\x00i\x00g\x00a\x00t\x00e' @ 905 : 1 .. (end); will stop at (end)
