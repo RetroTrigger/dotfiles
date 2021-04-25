@@ -1,0 +1,68 @@
+
+- defaults:
+    link:
+      create: true
+      relink: true
+      force: true
+
+- link:
+    ~/.zshrc:
+      glob: true
+      path: .zshrc
+
+    ~/.aliasrc:
+      glob: true
+      path: .aliasrc
+
+    ~/.icons/:
+      glob: true
+      path: icons/*
+
+    ~/.themes/:
+      glob: true
+      path: themes/*
+
+    ~/.wallpaper/:
+      glob: true
+      path: wallpaper/*
+
+    ~/.p10k.zsh:
+      glob: true
+      path: .p10k.zsh
+
+    ~/.config/autostart/:
+      glob: true
+      path: config/autostart/*
+
+    ~/.config/BraveSoftware/:
+      glob: true
+      path: config/BraveSoftware/*
+
+    ~/.config/i3/:
+      glob: true
+      path: config/i3/*
+
+    ~/.config/nitrogen/:
+      glob: true
+      path: config/nitrogen/*
+
+    ~/.config/picom.conf:
+      path: config/picom.conf
+
+    ~/.config/rofi/:
+      glob: true
+      path: config/rofi/*
+
+    ~/.config/transmission/:
+      glob: true
+      path: config/transmission/*
+
+- clean: ["~"]
+
+- clean:
+    ~/:
+      force: true
+    ~/.config:
+      recursive: true
+    ~/.local:
+      recursive: true

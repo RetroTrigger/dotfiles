@@ -1,0 +1,15 @@
+2021/04/25-11:48:28.221 14a7 Reusing MANIFEST /home/user/.config/BraveSoftware/Brave-Browser/Default/Extension State/MANIFEST-000001
+2021/04/25-11:48:28.221 14a7 Recovering log #77
+2021/04/25-11:48:28.225 14a7 Reusing old log /home/user/.config/BraveSoftware/Brave-Browser/Default/Extension State/000077.log 
+2021/04/25-12:07:28.435 2fa3 Level-0 table #81: started
+2021/04/25-12:07:28.468 2fa3 Level-0 table #81: 4052501 bytes OK
+2021/04/25-12:07:28.475 2fa3 Delete type=0 #77
+2021/04/25-12:07:28.476 2fa3 Compacting 4@0 + 1@1 files
+2021/04/25-12:07:28.504 2fa3 Generated table #82@0: 5 keys, 24104 bytes
+2021/04/25-12:07:28.504 2fa3 Compacted 4@0 + 1@1 files => 24104 bytes
+2021/04/25-12:07:28.509 2fa3 compacted to: files[ 0 1 1 0 0 0 0 ]
+2021/04/25-12:07:28.510 2fa3 Delete type=2 #75
+2021/04/25-12:07:28.510 2fa3 Delete type=2 #81
+2021/04/25-12:07:28.510 2fa3 Delete type=2 #71
+2021/04/25-12:07:28.510 2fa3 Delete type=2 #78
+2021/04/25-12:07:28.510 2fa3 Delete type=2 #73
