@@ -1,16 +1,5 @@
 
 # This file a modified version based by default i3-config-wizard config
-# source is available here:
-# https://raw.githubusercontent.com/endeavouros-team/endeavouros-i3wm-setup/master/.config/i3/config
-# Maintainer: joekamprad [joekamprad@endeavouros.com] 
-# https://endeavouros.com
-#
-# --> to update this run the following command:
-# wget --backups=1 https://raw.githubusercontent.com/endeavouros-team/endeavouros-i3wm-setup/main/.config/i3/config -P ~/.config/i3/
-
-# Endeavouros-i3 config file
-# Source for complete framework of our i3 config and theming here: https://github.com/endeavouros-team/endeavouros-i3wm-setup
-# EndeavourOS wiki holds some Information also: https://endeavouros.com/docs/window-tiling-managers/i3-wm/
 # Please see http://i3wm.org/docs/userguide.html for the official i3 reference!
 
 #######################
@@ -54,8 +43,6 @@ new_window pixel 1
 # Set inner/outer gaps
 gaps inner 8
 gaps outer 4
-
-
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -250,7 +237,7 @@ bindsym Print exec "scrot ~/%Y-%m-%d-%T-screenshot.png"
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1:"
-set $ws2 "2:"
+set $ws2 "2:"
 set $ws3 "3:"
 set $ws4 "4:"
 set $ws5 "5:"
@@ -274,7 +261,7 @@ assign [class="Terminator"] $ws1
 assign [class="Brave"] $ws2
 assign [class="Nautilus"] $ws3
 assign [class="Steam"] $ws4
-assign [class="TelegramDesktop"] $ws5
+
 
 
 # automatic set focus new window if it opens on another workspace then the current:
@@ -282,7 +269,6 @@ for_window [class=Terminator] focus
 for_window [class=Brave] focus
 for_window [class=Nautilus] focus
 for_window [class=Steam] focus
-#for_window [class=TelegramDesktop] focus
 
 #############################################
 # autostart applications/services on login: #
@@ -311,28 +297,27 @@ exec --no-startup-id ~/.screenlayout/monitor.sh
 exec --no-startup-id blueberry-tray
 
 #transparency 
-#exec --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
 exec --no-startup-id picom --experimental-backends
 
 #networkmanager-applet
 exec --no-startup-id nm-applet
+
+#pulseaudio-applet
+exec --no-startup-id pa-applet
 
 # set wallpaper
 exec --no-startup-id nitrogen --restore
 #exec --no-startup-id feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros_i3.png
 
 #set powersavings for display:
-exec --no-startup-id xset s 480 dpms 600 600 600
+#exec --no-startup-id xset s 480 dpms 600 600 600
 
 # Desktop notifications
 exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 
 # Autostart apps as you like
-#exec_always --no-startup-id $HOME/polybar-collection/launch.sh
 exec --no-startup-id xscreensaver -nosplash
-#exec --no-startup-id sleep 2 && xfce4-terminal
 exec --no-startup-id steam -silent
-#exec --no-startup-id sleep 3 && thunar
 
 # set floating (nontiling)for apps needing it
 for_window [class="Yad" instance="yad"] floating enable
@@ -364,18 +349,19 @@ for_window [title="^Steam Keyboard$"] floating enable
 ######################################
  
 # Define colors variables: 
-set $darkbluetrans	#08052be6
+set $darkbluetrans	#08052bCC
 set $darkblue		#08052b
 set $lightblue		#5294e2
 set $urgentred		#e53935
-set $white		#ffffff
-set $black		#000000
-set $purple		#e345ff
+set $white		    #ffffff
+set $black		    #000000
+set $purple		    #e345ff
 set $darkgrey		#383c4a
-set $grey		#b0b5bd
+set $grey		    #b0b5bd
 set $mediumgrey		#8b8b8b
 set $yellowbrown	#e1b700
 set $darkpurple     #99004C
+set $transparent    #FF000000
 
 # define colors for windows:
 #class		        	border		bground		text		indicator	#child_border
@@ -393,10 +379,8 @@ client.urgent		    $urgentred	$urgentred	$white		$purple		#$yellowbrown
 bar {
 		font pango:Noto Sans Regular 10, FontAwesome 10
 		status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	    	position bottom 
+	    	position top 
 	    	i3bar_command i3bar --transparency
-		    tray_output primary
-		    tray_padding 0
 
 # When strip_workspace_numbers is set to yes, 
 # any workspace that has a name of the form 
@@ -406,47 +390,15 @@ strip_workspace_numbers yes
 
 		    colors {
 		    separator          $purple
-		    background         $darkblue
+		    background         $darkbluetrans
 		    statusline         $white
 #                         		border 		        bg		txt		indicator
-		focused_workspace	$mediumgrey	   	    $grey		$darkgrey	$purple
-		active_workspace	$lightblue      	$mediumgrey	$darkgrey	$purple
-		inactive_workspace	$darkgrey   		$darkblue	$grey		$purple
-		urgent_workspace	$urgentred	    	$urgentred	$white		$purple 
+		focused_workspace	$darkbluetrans  	    $darkbluetrans		$grey	$purple
+		active_workspace	$darkbluetrans      	$darkbluetrans	    $grey	$purple
+		inactive_workspace	$darkbluetrans   		$darkbluetrans  	$darkgrey	$purple
+		urgent_workspace	$darkbluetrans    	$urgentred	$white		$purple 
 	}
 }
-
-
-# you can add different bars for multidisplay setups on each display:
-# set output HDMI-0 to the display you want the bar, --transparency can be set.
-# Transparency needs rgba color codes to be used where the last two letters are the transparency factor see here:
-# https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4
-# #08052be6 --> e6=90%
-
-# bar {	
-#	font pango:Noto Sans Regular 9, FontAwesome 9
-#	status_command i3blocks -c ~/.config/i3/i3blocks-2.conf
-#	i3bar_command i3bar --transparency
-#	output HDMI-0
-#	position bottom
-#
-# When strip_workspace_numbers is set to yes, 
-# any workspace that has a name of the form 
-# “[n][:][NAME]” will display only the name.
-#strip_workspace_numbers yes
-##strip_workspace_name no
-#
-#	colors {
-#		separator          $purple
-#		background         $darkbluetrans
-#        	statusline         $white
-#					border		bg		txt		indicator
-#		focused_workspace	$lighterblue	$lighterblue	$darkblue	$purple
-#		active_workspace	$lightdblue	$lightdblue	$darkblue	$purple
-#		inactive_workspace	$darkblue	$darkblue	$lightdblue	$purple
-#		urgent_workspace	$urgentred	$urgentred	$white		$purple 
-#	}
-#}
 
 #####################################
 # Application menu handled by rofi: #
