@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-DOTFILES_REPO="${1:-https://github.com/YOUR_USERNAME/dotfiles}"
+DOTFILES_REPO="${1:-https://github.com/RetroTrigger/dotfiles}"
 
 echo "==> Installing dependencies..."
 sudo dnf install -y \
