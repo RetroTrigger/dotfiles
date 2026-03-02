@@ -1,0 +1,9 @@
+configuration {
+    show-icons:    true;
+    icon-theme:    "hicolor";
+    display-drun:  " ";
+    display-run:   " ";
+    display-combi: " ";
+}
+
+@theme "/home/geremy/.config/rofi/tokyo-night.rasi"

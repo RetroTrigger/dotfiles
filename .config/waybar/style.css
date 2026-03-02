@@ -1,0 +1,274 @@
+* {
+    font-family: 'Noto Sans Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0.35);
+    border-bottom: none;
+    color: #c0caf5;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+button {
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+}
+
+button:hover {
+    background: rgba(122, 162, 247, 0.1);
+    box-shadow: none;
+}
+
+/* ── Workspaces ──────────────────────────────────────────── */
+
+#workspaces button {
+    padding: 0;
+    margin: 0 4px;
+    min-width: 16px;
+    background-color: transparent;
+    color: #545c7e;
+    border-bottom: none;
+}
+
+#workspaces button label {
+    font-size: 14px;
+}
+
+#workspaces button:hover {
+    background: rgba(122, 162, 247, 0.1);
+    color: #c0caf5;
+}
+
+#workspaces button.focused {
+    color: #7aa2f7;
+}
+
+#workspaces button.urgent {
+    color: #f7768e;
+}
+
+/* ── Mode indicator ──────────────────────────────────────── */
+
+#mode {
+    padding: 0 10px;
+    color: #e0af68;
+    border-bottom: 2px solid #e0af68;
+}
+
+/* ── All modules (base) ──────────────────────────────────── */
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#mpd,
+#language {
+    padding: 0 4px;
+    background-color: transparent;
+    color: #c0caf5;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 4px;
+}
+
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 4px;
+}
+
+.modules-right > widget:last-child {
+    margin-right: 4px;
+}
+
+/* ── Individual module colors ────────────────────────────── */
+
+#clock {
+    color: #7aa2f7;
+    font-weight: bold;
+}
+
+#cpu {
+    color: #7aa2f7;
+}
+
+#memory {
+    color: #bb9af7;
+}
+
+#temperature {
+    color: #e0af68;
+}
+
+#temperature.critical {
+    color: #f7768e;
+}
+
+#network {
+    color: #7dcfff;
+}
+
+#network.disconnected {
+    color: #f7768e;
+}
+
+#pulseaudio {
+    color: #9ece6a;
+}
+
+#pulseaudio.muted {
+    color: #545c7e;
+}
+
+#wireplumber {
+    color: #9ece6a;
+}
+
+#wireplumber.muted {
+    color: #f7768e;
+}
+
+#backlight {
+    color: #e0af68;
+}
+
+#battery {
+    color: #9ece6a;
+}
+
+#battery.warning {
+    color: #e0af68;
+}
+
+#battery.critical:not(.charging) {
+    color: #f7768e;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #9ece6a;
+}
+
+@keyframes blink {
+    to {
+        color: #f7768e;
+        opacity: 0.5;
+    }
+}
+
+#power-profiles-daemon {
+    padding-right: 15px;
+}
+
+#power-profiles-daemon.performance {
+    color: #f7768e;
+}
+
+#power-profiles-daemon.balanced {
+    color: #7aa2f7;
+}
+
+#power-profiles-daemon.power-saver {
+    color: #9ece6a;
+}
+
+#language {
+    color: #bb9af7;
+    min-width: 16px;
+}
+
+#idle_inhibitor {
+    color: #545c7e;
+}
+
+#idle_inhibitor.activated {
+    color: #e0af68;
+}
+
+#scratchpad {
+    color: #545c7e;
+}
+
+#scratchpad.empty {
+    background-color: transparent;
+}
+
+#tray {
+    padding: 0 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    color: #f7768e;
+}
+
+#mpd {
+    color: #9ece6a;
+}
+
+#mpd.disconnected {
+    color: #f7768e;
+}
+
+#mpd.stopped {
+    color: #545c7e;
+}
+
+#mpd.paused {
+    color: #545c7e;
+}
+
+/* ── Privacy ─────────────────────────────────────────────── */
+
+#privacy {
+    padding: 0;
+}
+
+#privacy-item {
+    padding: 0 5px;
+    color: white;
+}
+
+#privacy-item.screenshare {
+    color: #e0af68;
+}
+
+#privacy-item.audio-in {
+    color: #9ece6a;
+}
+
+#privacy-item.audio-out {
+    color: #7aa2f7;
+}
