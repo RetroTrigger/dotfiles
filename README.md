@@ -2,7 +2,7 @@
 
 My personal Sway WM rice — Tokyo Night theme.
 
-![Tokyo Night](https://raw.githubusercontent.com/RetroTrigger/dotfiles/main/.config/sway/matrix-tokyonight.png)
+![Tokyo Night](https://raw.githubusercontent.com/RetroTrigger/dotfiles/main/screenshot.png)
 
 ## Overview
 
