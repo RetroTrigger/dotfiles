@@ -87,3 +87,38 @@ dotfiles commit -m "Update waybar style"
 # Push to remote
 dotfiles push
 ```
+
+## Optional X11/dwm monitor switching
+
+The tracked `.local/bin/monitor-switch`, `.local/bin/monitor-watch`, and
+`.xinitrc` provide automatic external-monitor switching for X11/dwm. The
+`base-dwm-install.sh` script in `RetroTrigger/Scripts` installs this feature
+only when its monitor-switching prompt is accepted.
+
+The switcher identifies `eDP*`, `LVDS*`, and `DSI*` outputs as internal
+panels. Any other connected Xrandr output is treated as external. It prefers
+an already-active external output, makes that output primary, and disables
+the laptop panel. Disconnecting all external outputs restores the internal
+panel. The watcher listens for DRM udev events rather than polling Xrandr.
+
+Inspect and test the setup from an X11 session:
+
+```bash
+xrandr --query
+~/.local/bin/monitor-switch
+~/.local/bin/monitor-watch   # Ctrl+C stops the manual test
+pgrep -af monitor-watch
+tail -n 20 ~/.local/state/monitor-switch.log
+```
+
+To disable it, remove the enablement file and start a fresh DWM session. To
+remove it completely, also remove the marked block from `.xinitrc` and remove
+the two tracked scripts through the bare dotfiles repository:
+
+```bash
+pkill -f "$HOME/.local/bin/[m]onitor-watch"
+rm ~/.config/dwm/automatic-monitor-switch
+dotfiles rm ~/.local/bin/monitor-switch ~/.local/bin/monitor-watch
+dotfiles add ~/.xinitrc
+dotfiles commit -m "Remove automatic monitor switching"
+```

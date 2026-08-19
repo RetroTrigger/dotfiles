@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+set -u
+
+readonly MONITOR_SWITCH="$HOME/.local/bin/monitor-switch"
+UDEV_MONITOR_PID=""
+
+cleanup() {
+    if [ -n "$UDEV_MONITOR_PID" ]; then
+        kill "$UDEV_MONITOR_PID" 2>/dev/null || true
+        wait "$UDEV_MONITOR_PID" 2>/dev/null || true
+    fi
+}
+
+trap cleanup EXIT INT TERM HUP
+
+run_switch() {
+    "$MONITOR_SWITCH" || true
+}
+
+main() {
+    local event
+    local event_fd
+
+    [ -x "$MONITOR_SWITCH" ] || {
+        printf 'monitor-watch: %s is missing or not executable\n' "$MONITOR_SWITCH" >&2
+        return 1
+    }
+    command -v udevadm >/dev/null 2>&1 || {
+        printf 'monitor-watch: udevadm is required\n' >&2
+        return 1
+    }
+
+    run_switch
+
+    coproc UDEV_EVENTS { udevadm monitor --udev --subsystem-match=drm 2>/dev/null; }
+    UDEV_MONITOR_PID=$UDEV_EVENTS_PID
+    event_fd=${UDEV_EVENTS[0]}
+
+    while IFS= read -r -u "$event_fd" event 2>/dev/null; do
+        [[ "$event" == UDEV*"/drm/"* ]] || continue
+
+        # Let X update connector state, then drain duplicate events from the burst.
+        sleep 0.75
+        while IFS= read -r -t 0.15 -u "$event_fd" event 2>/dev/null; do
+            :
+        done
+        run_switch
+    done
+}
+
+if [ "${MONITOR_WATCH_TESTING:-0}" != 1 ]; then
+    main "$@"
+fi

@@ -1,0 +1,106 @@
+#!/usr/bin/env bash
+
+set -u
+
+readonly STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}"
+readonly LOG_FILE="$STATE_DIR/monitor-switch.log"
+readonly STATE_FILE="$STATE_DIR/monitor-switch.state"
+
+warn() {
+    printf 'monitor-switch: %s\n' "$*" >&2
+}
+
+record_state() {
+    local state=$1
+    local message=$2
+    local previous=""
+
+    mkdir -p "$STATE_DIR"
+    [ ! -r "$STATE_FILE" ] || IFS= read -r previous <"$STATE_FILE"
+    if [ "$previous" != "$state" ]; then
+        printf '%s\n' "$state" >"$STATE_FILE"
+        printf '%s %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$message" >>"$LOG_FILE"
+    fi
+}
+
+main() {
+    local query
+    local output
+    local state
+    local line
+    local internal=""
+    local selected_external=""
+    local first_external=""
+    local active_external=""
+    local -a external_outputs=()
+    local -a xrandr_args=()
+
+    if ! query=$(xrandr --query); then
+        warn "unable to query X11 displays"
+        return 1
+    fi
+
+    while IFS= read -r line; do
+        output=${line%% *}
+        state=${line#* }
+        state=${state%% *}
+
+        case "$output" in
+            eDP*|LVDS*|DSI*)
+                if [ "$state" = connected ] && [ -z "$internal" ]; then
+                    internal=$output
+                fi
+                ;;
+            *)
+                external_outputs+=("$output")
+                if [ "$state" = connected ]; then
+                    [ -n "$first_external" ] || first_external=$output
+                    if [[ "$line" =~ [[:space:]][0-9]+x[0-9]+\+[0-9]+\+[0-9]+ ]] && [ -z "$active_external" ]; then
+                        active_external=$output
+                    fi
+                fi
+                ;;
+        esac
+    done < <(printf '%s\n' "$query" | awk '$2 == "connected" || $2 == "disconnected"')
+
+    selected_external=${active_external:-$first_external}
+    printf 'INTERNAL=%s\n' "${internal:-none}"
+    printf 'EXTERNAL=%s\n' "${selected_external:-none}"
+
+    if [ -n "$selected_external" ]; then
+        xrandr_args+=(--output "$selected_external" --auto --primary --pos 0x0)
+        [ -z "$internal" ] || xrandr_args+=(--output "$internal" --off)
+        for output in "${external_outputs[@]}"; do
+            [ "$output" = "$selected_external" ] || xrandr_args+=(--output "$output" --off)
+        done
+        if xrandr "${xrandr_args[@]}"; then
+            record_state "external:$selected_external" "Switching to external monitor: $selected_external"
+        else
+            warn "failed to switch to external monitor $selected_external"
+            return 1
+        fi
+        return
+    fi
+
+    if [ -n "$internal" ]; then
+        xrandr_args+=(--output "$internal" --auto --primary --pos 0x0)
+        for output in "${external_outputs[@]}"; do
+            xrandr_args+=(--output "$output" --off)
+        done
+        if xrandr "${xrandr_args[@]}"; then
+            record_state "internal:$internal" "Switching to internal monitor: $internal"
+        else
+            warn "failed to switch to internal monitor $internal"
+            return 1
+        fi
+        return
+    fi
+
+    warn "no connected internal or external display was detected; leaving the current configuration unchanged"
+    record_state "error:no-display" "No usable display detected; configuration left unchanged"
+    return 1
+}
+
+if [ "${MONITOR_SWITCH_TESTING:-0}" != 1 ]; then
+    main "$@"
+fi
