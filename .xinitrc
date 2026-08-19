@@ -17,6 +17,7 @@ fi
 export DWM_MONITOR_SWITCH_CONFIG="$HOME/.config/dwm/automatic-monitor-switch"
 # END automatic-monitor-switch
 
-feh --bg-scale /home/geremy/.config/suckless/dwm/Wallpaper.jpeg &
+# Source dwm autostart (wallpaper, compositor, etc.)
+[ -f "$HOME/.config/suckless/dwm/autostart.sh" ] && . "$HOME/.config/suckless/dwm/autostart.sh"
 
 exec /usr/local/bin/dwm-session
