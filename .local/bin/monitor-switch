@@ -10,6 +10,11 @@ warn() {
     printf 'monitor-switch: %s\n' "$*" >&2
 }
 
+restart_dwm() {
+    # Re-read Xinerama geometry after xrandr changes the active output.
+    pkill -HUP -x dwm 2>/dev/null || true
+}
+
 record_state() {
     local state=$1
     local message=$2
@@ -75,6 +80,7 @@ main() {
         done
         if xrandr "${xrandr_args[@]}"; then
             record_state "external:$selected_external" "Switching to external monitor: $selected_external"
+            restart_dwm
         else
             warn "failed to switch to external monitor $selected_external"
             return 1
@@ -89,6 +95,7 @@ main() {
         done
         if xrandr "${xrandr_args[@]}"; then
             record_state "internal:$internal" "Switching to internal monitor: $internal"
+            restart_dwm
         else
             warn "failed to switch to internal monitor $internal"
             return 1
