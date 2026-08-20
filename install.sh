@@ -2,6 +2,7 @@
 set -e
 
 DOTFILES_REPO="https://github.com/RetroTrigger/dotfiles"
+DOTFILES_DIR="$HOME/.dotfiles"
 
 # ── Output helpers ────────────────────────────────────────────
 
@@ -178,16 +179,21 @@ ok "GTK theme and cursor applied"
 echo ""
 echo "==> Dotfiles..."
 
-if [ -d "$HOME/.dotfiles" ]; then
-    ok "Dotfiles repo already exists, skipping clone"
+if [ -d "$DOTFILES_DIR" ]; then
+    if [ "$(git --git-dir="$DOTFILES_DIR" rev-parse --is-bare-repository 2>/dev/null)" != true ]; then
+        die "$DOTFILES_DIR exists but is not a bare git repository"
+    fi
+    git --git-dir="$DOTFILES_DIR" config --local --unset core.worktree 2>/dev/null || true
+    git --git-dir="$DOTFILES_DIR" config --local status.showUntrackedFiles no
+    ok "Dotfiles bare repo already exists, skipping clone"
 else
     info "Cloning bare repo..."
-    git clone --bare "$DOTFILES_REPO" "$HOME/.dotfiles"
-    git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" \
+    git clone --bare "$DOTFILES_REPO" "$DOTFILES_DIR"
+    git --git-dir="$DOTFILES_DIR/" --work-tree="$HOME" \
         config --local status.showUntrackedFiles no
 
     # Backup any conflicting files before checkout
-    CONFLICTS=$(git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" \
+    CONFLICTS=$(git --git-dir="$DOTFILES_DIR/" --work-tree="$HOME" \
         checkout 2>&1 | grep -E "^\s+\." | awk '{print $1}' || true)
 
     if [ -n "$CONFLICTS" ]; then
@@ -200,7 +206,7 @@ else
         done
     fi
 
-    git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" checkout
+    git --git-dir="$DOTFILES_DIR/" --work-tree="$HOME" checkout
     ok "Dotfiles checked out"
 fi
 
