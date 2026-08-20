@@ -5,6 +5,7 @@ set -u
 readonly STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}"
 readonly LOG_FILE="$STATE_DIR/monitor-switch.log"
 readonly STATE_FILE="$STATE_DIR/monitor-switch.state"
+readonly WALLPAPER="$HOME/.config/suckless/dwm/Wallpaper.jpeg"
 
 warn() {
     printf 'monitor-switch: %s\n' "$*" >&2
@@ -13,6 +14,18 @@ warn() {
 restart_dwm() {
     # Re-read Xinerama geometry after xrandr changes the active output.
     pkill -HUP -x dwm 2>/dev/null || true
+}
+
+apply_wallpaper() {
+    [ -r "$WALLPAPER" ] || {
+        warn "wallpaper is not readable: $WALLPAPER"
+        return
+    }
+    command -v feh >/dev/null 2>&1 || {
+        warn "feh is not installed; wallpaper was not applied"
+        return
+    }
+    feh --no-fehbg --bg-scale "$WALLPAPER" || warn "failed to apply wallpaper"
 }
 
 record_state() {
@@ -79,6 +92,7 @@ main() {
             [ "$output" = "$selected_external" ] || xrandr_args+=(--output "$output" --off)
         done
         if xrandr "${xrandr_args[@]}"; then
+            apply_wallpaper
             record_state "external:$selected_external" "Switching to external monitor: $selected_external"
             restart_dwm
         else
@@ -94,6 +108,7 @@ main() {
             xrandr_args+=(--output "$output" --off)
         done
         if xrandr "${xrandr_args[@]}"; then
+            apply_wallpaper
             record_state "internal:$internal" "Switching to internal monitor: $internal"
             restart_dwm
         else
