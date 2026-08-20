@@ -13,7 +13,7 @@ pgrep -x feh >/dev/null || feh --no-fehbg --bg-scale "$HOME/.config/suckless/dwm
 
 # Other autostart commands here...
 # pgrep -x xbindkeys >/dev/null || xbindkeys &
-# pgrep -x picom >/dev/null || picom --config "$HOME/.config/picom/picom.conf" &
+pgrep -x picom >/dev/null || picom --config "$HOME/.config/picom/picom.conf" &
 # pgrep -x dunst >/dev/null || dunst &
 
 # Cleanup lock on exit
